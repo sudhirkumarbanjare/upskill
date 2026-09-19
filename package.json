@@ -1,0 +1,42 @@
+{
+  "name": "5upskill",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/@react-native-firebase/**",
+      "**/react-native-reanimated",
+      "**/react-native-reanimated/**",
+      "**/react-native-gesture-handler",
+      "**/react-native-gesture-handler/**"
+    ]
+  },
+  "scripts": {
+    "student": "yarn workspace @upskill/student",
+    "client": "yarn workspace @upskill/client",
+    "admin": "yarn workspace @upskill/admin",
+    "shared": "yarn workspace @upskill/shared",
+    "student:android": "yarn workspace @upskill/student android",
+    "client:android": "yarn workspace @upskill/client android",
+    "admin:android": "yarn workspace @upskill/admin android",
+    "lint": "yarn workspaces run lint",
+    "typecheck": "yarn workspaces run typecheck"
+  },
+  "packageManager": "yarn@3.6.4",
+  "dependencies": {
+    "@react-native-community/netinfo": "~11.4.1",
+    "@react-native-firebase/app": "~21.6.2",
+    "@react-native-firebase/auth": "~21.6.2",
+    "@react-native-firebase/firestore": "~21.6.2",
+    "@react-native-firebase/storage": "~21.6.2",
+    "react-native-gesture-handler": "~2.21.2",
+    "react-native-reanimated": "~3.16.7",
+    "react-native-svg": "^15.15.5"
+  }
+}

@@ -1,0 +1,140 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper Functions ───
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && getUserData().role == 'admin';
+    }
+
+    function isClient() {
+      return isAuthenticated() && getUserData().role == 'client';
+    }
+
+    function isApprovedClient() {
+      return isClient() && getUserData().clientStatus == 'approved';
+    }
+
+    function isStudent() {
+      return isAuthenticated() && getUserData().role == 'student';
+    }
+
+    function isNotSuspended() {
+      return !getUserData().isSuspended;
+    }
+
+    // ─── System Config ───
+    match /system_config/{configId} {
+      // Anyone authenticated can read app_versions to check force update
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ─── Users Collection ───
+    match /users/{userId} {
+      // Any authenticated user can read basic user info (for profiles, project posters, applicants)
+      allow read: if isAuthenticated();
+
+      // Users can create their own initial profile during registration
+      allow create: if isOwner(userId)
+                    && request.resource.data.role in ['student', 'client']
+                    && request.resource.data.isSuspended == false;
+
+      // Users can update their own profile, but cannot tamper with role, isSuspended, or clientStatus
+      allow update: if (isOwner(userId)
+                        && request.resource.data.role == resource.data.role
+                        && request.resource.data.isSuspended == resource.data.isSuspended
+                        && (!('clientStatus' in resource.data) || request.resource.data.clientStatus == resource.data.clientStatus))
+                    || isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // ─── Projects Collection ───
+    match /projects/{projectId} {
+      // Authenticated active users can read open projects
+      allow read: if isAuthenticated();
+
+      // Approved clients can create projects
+      allow create: if isApprovedClient()
+                    && isNotSuspended()
+                    && request.resource.data.clientId == request.auth.uid
+                    && request.resource.data.filledSlots == 0;
+
+      // Clients can update their own projects (title, desc, status etc.)
+      // Note: filledSlots is updated during application acceptance via transactions
+      allow update: if (isApprovedClient()
+                        && resource.data.clientId == request.auth.uid
+                        && isNotSuspended())
+                    || isAdmin();
+
+      allow delete: if (isApprovedClient() && resource.data.clientId == request.auth.uid)
+                    || isAdmin();
+    }
+
+    // ─── Applications Collection ───
+    match /applications/{applicationId} {
+      // Student can read own applications; Client can read applications for their projects; Admin can read all
+      allow read: if isAuthenticated() && (
+        resource.data.studentId == request.auth.uid ||
+        resource.data.clientId == request.auth.uid ||
+        isAdmin()
+      );
+
+      // Student can apply if not suspended and project has available slots
+      allow create: if isStudent()
+                    && isNotSuspended()
+                    && request.resource.data.studentId == request.auth.uid
+                    && request.resource.data.status == 'applied';
+
+      // Client can update status (accept/reject) for applications to their projects
+      allow update: if (isApprovedClient()
+                        && resource.data.clientId == request.auth.uid
+                        && request.resource.data.status in ['applied', 'accepted', 'rejected'])
+                    || isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // ─── Courses Collection ───
+    match /courses/{courseId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+
+      match /modules/{moduleId} {
+        allow read: if isAuthenticated();
+        allow write: if isAdmin();
+      }
+    }
+
+    // ─── Assessments Collection ───
+    match /assessments/{assessmentId} {
+      // Questions catalog can be read by all authenticated, written by admin
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ─── Assessment Results Subcollection / Collection ───
+    match /assessment_results/{resultId} {
+      allow read: if isAuthenticated() && (
+        resource.data.studentId == request.auth.uid || isAdmin()
+      );
+      allow create: if isStudent()
+                    && request.resource.data.studentId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+  }
+}

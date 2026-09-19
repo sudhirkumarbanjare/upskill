@@ -1,0 +1,35 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Avatars: readable by any authenticated user, writable by owner up to 5MB images
+    match /avatars/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId)
+                    && request.resource.size < 5 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*');
+    }
+
+    // Company logos: readable by all authenticated, writable by company owner up to 5MB
+    match /logos/{clientId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(clientId)
+                    && request.resource.size < 5 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*');
+    }
+
+    // Course thumbnails/materials: readable by authenticated users
+    match /courses/{courseId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated(); // Handled with admin custom claims or verification in app
+    }
+  }
+}

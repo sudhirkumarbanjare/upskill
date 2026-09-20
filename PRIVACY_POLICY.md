@@ -1,8 +1,8 @@
-# Privacy Policy for 5Upskill Platform
+# Privacy Policy for Upskill Platform
 
 **Last Updated**: September 20, 2026
 
-5Upskill ("we", "our", or "us") operates the **5Upskill: Learn & Earn Projects** (Student App), **5Upskill for Clients** (Client App), and **5Upskill Admin Console** (Admin App). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile applications and related services.
+Upskill ("we", "our", or "us") operates the **Upskill: Learn & Earn Projects** (Student App), **Upskill for Clients** (Client App), and **Upskill Admin Console** (Admin App). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile applications and related services.
 
 ---
 
@@ -51,12 +51,12 @@ We do not sell your personal data. We share information only with trusted servic
 ## 5. Account & Data Deletion
 Users have the right to request deletion of their account and associated data at any time.
 - **In-App**: Navigate to **Profile** -> **Account Settings** -> **Delete Account**.
-- **Web Form**: Submit a deletion request at `https://5upskill.com/delete-account` or email `privacy@5upskill.com`.
+- **Web Form**: Submit a deletion request at `https://upskill.com/delete-account` or email `privacy@upskill.com`.
 - Upon verification, all personal profile records will be permanently purged within 30 days, except records required to be retained for statutory tax/financial compliance.
 
 ---
 
 ## 6. Contact Us
 If you have questions regarding this Privacy Policy or our data practices:
-- **Email**: `privacy@5upskill.com` / `support@5upskill.com`
-- **Address**: 5Upskill Technologies Private Limited, Bengaluru, Karnataka, India
+- **Email**: `privacy@upskill.com` / `support@upskill.com`
+- **Address**: Upskill Technologies Private Limited, Bengaluru, Karnataka, India

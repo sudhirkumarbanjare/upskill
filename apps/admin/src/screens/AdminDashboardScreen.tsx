@@ -39,7 +39,7 @@ export function AdminDashboardScreen({
         </View>
         <Text style={styles.title}>Platform Command Center</Text>
         <Text style={styles.subtitle}>
-          5Upskill Multi-Sided Marketplace Health
+          Upskill Multi-Sided Marketplace Health
         </Text>
       </View>
 

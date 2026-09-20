@@ -1,5 +1,5 @@
 /**
- * 5Upskill — Production Firestore Initializer & Seed Script
+ * Upskill — Production Firestore Initializer & Seed Script
  * 
  * Usage:
  *   node scripts/seed-production-config.js
@@ -29,7 +29,7 @@ async function seedSystemConfig() {
       latestVersion: '1.0.0',
       forceUpdate: false,
       storeUrl: 'https://play.google.com/store/apps/details?id=com.upskill.student',
-      releaseNotes: 'Initial production release of 5Upskill Student App.',
+      releaseNotes: 'Initial production release of Upskill Student App.',
       updatedAt: new Date().toISOString(),
     },
     client: {
@@ -37,7 +37,7 @@ async function seedSystemConfig() {
       latestVersion: '1.0.0',
       forceUpdate: false,
       storeUrl: 'https://play.google.com/store/apps/details?id=com.upskill.client',
-      releaseNotes: 'Initial production release of 5Upskill Client App.',
+      releaseNotes: 'Initial production release of Upskill Client App.',
       updatedAt: new Date().toISOString(),
     },
     admin: {
@@ -45,7 +45,7 @@ async function seedSystemConfig() {
       latestVersion: '1.0.0',
       forceUpdate: false,
       storeUrl: 'https://play.google.com/store/apps/details?id=com.upskill.admin',
-      releaseNotes: 'Initial production release of 5Upskill Admin Console.',
+      releaseNotes: 'Initial production release of Upskill Admin Console.',
       updatedAt: new Date().toISOString(),
     },
   };

@@ -94,9 +94,9 @@ export function AdminNavigator({user, onSignOut}: AdminNavigatorProps) {
         <View style={styles.topHeaderLeft}>
           <View style={styles.brandRow}>
             <Icon name="shield-check" size={18} color={colors.accent[400]} />
-            <Text style={styles.appTitle}>5Upskill Console</Text>
+            <Text style={styles.appTitle}>Upskill Console</Text>
           </View>
-          <Text style={styles.adminEmail}>{user.email || 'admin@5upskill.com'}</Text>
+          <Text style={styles.adminEmail}>{user.email || 'admin@upskill.com'}</Text>
         </View>
         <TouchableOpacity style={styles.signOutBtn} onPress={onSignOut}>
           <Icon name="log-out" size={14} color={colors.neutral[300]} />

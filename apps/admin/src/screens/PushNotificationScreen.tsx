@@ -444,10 +444,10 @@ export function PushNotificationScreen() {
                 </View>
                 <Text style={styles.notifAppName}>
                   {targetScope === 'client_app'
-                    ? '5Upskill Client'
+                    ? 'Upskill Client'
                     : targetScope === 'admin_staff'
-                    ? '5Upskill Console'
-                    : '5Upskill Student'}
+                    ? 'Upskill Console'
+                    : 'Upskill Student'}
                 </Text>
                 <Text style={styles.notifDot}>•</Text>
                 <Text style={styles.notifTime}>Just now</Text>

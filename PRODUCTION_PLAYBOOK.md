@@ -1,4 +1,4 @@
-# 5Upskill — End-to-End Production Launch Playbook
+# Upskill — End-to-End Production Launch Playbook
 
 An exhaustive, sequence-by-sequence production deployment checklist and command-line guide for all 3 apps (**Student**, **Client**, and **Admin**) across **Keystore Signing**, **Firebase**, **Google Cloud Platform (GCP)**, and the **Google Play Console**.
 
@@ -35,7 +35,7 @@ keytool -genkeypair -v \
   -validity 10000 \
   -storepass "YOUR_SECURE_PASSWORD" \
   -keypass "YOUR_SECURE_PASSWORD" \
-  -dname "CN=5Upskill Student, OU=Mobile, O=5Upskill, L=Bengaluru, ST=Karnataka, C=IN"
+  -dname "CN=Upskill Student, OU=Mobile, O=Upskill, L=Bengaluru, ST=Karnataka, C=IN"
 
 # 2. Client App Keystore
 keytool -genkeypair -v \
@@ -46,7 +46,7 @@ keytool -genkeypair -v \
   -validity 10000 \
   -storepass "YOUR_SECURE_PASSWORD" \
   -keypass "YOUR_SECURE_PASSWORD" \
-  -dname "CN=5Upskill Client, OU=Mobile, O=5Upskill, L=Bengaluru, ST=Karnataka, C=IN"
+  -dname "CN=Upskill Client, OU=Mobile, O=Upskill, L=Bengaluru, ST=Karnataka, C=IN"
 
 # 3. Admin App Keystore
 keytool -genkeypair -v \
@@ -57,7 +57,7 @@ keytool -genkeypair -v \
   -validity 10000 \
   -storepass "YOUR_SECURE_PASSWORD" \
   -keypass "YOUR_SECURE_PASSWORD" \
-  -dname "CN=5Upskill Admin, OU=Mobile, O=5Upskill, L=Bengaluru, ST=Karnataka, C=IN"
+  -dname "CN=Upskill Admin, OU=Mobile, O=Upskill, L=Bengaluru, ST=Karnataka, C=IN"
 ```
 
 ### 1.2 Extract SHA-1 & SHA-256 Fingerprints for Firebase Phone Auth
@@ -280,9 +280,9 @@ cd ../../..
 ### 6.1 Create 3 Applications in Play Console
 1. Go to **[Google Play Console](https://play.google.com/console)**.
 2. Click **Create app** for each:
-   - **App 1**: `5Upskill: Learn & Earn Projects` (Package: `com.upskill.student`, Category: Education / Business)
-   - **App 2**: `5Upskill for Clients: Hire Talent` (Package: `com.upskill.client`, Category: Business)
-   - **App 3**: `5Upskill Admin Console` (Package: `com.upskill.admin`, Category: Business, Access: Restricted Internal)
+   - **App 1**: `Upskill: Learn & Earn Projects` (Package: `com.upskill.student`, Category: Education / Business)
+   - **App 2**: `Upskill for Clients: Hire Talent` (Package: `com.upskill.client`, Category: Business)
+   - **App 3**: `Upskill Admin Console` (Package: `com.upskill.admin`, Category: Business, Access: Restricted Internal)
 
 ### 6.2 App Content & Policy Checklist
 For each app, complete all mandatory questionnaire sections:

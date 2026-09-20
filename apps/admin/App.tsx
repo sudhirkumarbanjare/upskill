@@ -16,7 +16,7 @@ const DEMO_ADMIN = {
   uid: 'demo-admin-root',
   phone: '+919900112233',
   displayName: 'Antigravity SuperAdmin',
-  email: 'admin@5upskill.com',
+  email: 'admin@upskill.com',
   role: 'admin' as const,
   isSuspended: false,
   createdAt: new Date().toISOString(),
@@ -41,7 +41,7 @@ export default function App() {
               <View style={styles.stateIconCircle}>
                 <Icon name="shield-check" size={32} color={colors.accent[400]} />
               </View>
-              <Text style={styles.stateTitle}>5Upskill Admin Console</Text>
+              <Text style={styles.stateTitle}>Upskill Admin Console</Text>
               <Text style={styles.stateSubtitle}>Root Administrator clearance required.</Text>
               <TouchableOpacity
                 style={styles.stateBtn}

@@ -19,7 +19,7 @@ export function PendingApprovalBanner() {
           </View>
         </View>
         <Text style={styles.bannerSubtitle}>
-          Your corporate profile is undergoing 5Upskill partner verification.
+          Your corporate profile is undergoing Upskill partner verification.
           You can draft projects now; they will become public once approved.
         </Text>
       </View>

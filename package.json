@@ -26,7 +26,20 @@
     "client:android": "yarn workspace @upskill/client android",
     "admin:android": "yarn workspace @upskill/admin android",
     "lint": "yarn workspaces run lint",
-    "typecheck": "yarn workspaces run typecheck"
+    "typecheck": "yarn workspaces run typecheck",
+    "bundle:student": "cd apps/student && npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res",
+    "bundle:client": "cd apps/client && npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res",
+    "bundle:admin": "cd apps/admin && npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res",
+    "bundle:all": "yarn bundle:student && yarn bundle:client && yarn bundle:admin",
+    "build:aab:student": "cd apps/student/android && ./gradlew bundleRelease",
+    "build:aab:client": "cd apps/client/android && ./gradlew bundleRelease",
+    "build:aab:admin": "cd apps/admin/android && ./gradlew bundleRelease",
+    "build:aab:all": "yarn build:aab:student && yarn build:aab:client && yarn build:aab:admin",
+    "build:apk:student": "cd apps/student/android && ./gradlew assembleDebug",
+    "build:apk:client": "cd apps/client/android && ./gradlew assembleDebug",
+    "build:apk:admin": "cd apps/admin/android && ./gradlew assembleDebug",
+    "build:apk:all": "yarn build:apk:student && yarn build:apk:client && yarn build:apk:admin",
+    "deploy:firebase": "npx -y firebase-tools deploy --only firestore:rules,firestore:indexes,storage"
   },
   "packageManager": "yarn@3.6.4",
   "dependencies": {

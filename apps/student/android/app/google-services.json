@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "533722609237",
+    "project_id": "upskill-fb046",
+    "storage_bucket": "upskill-fb046.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533722609237:android:12f75098f982eb177c06dc",
+        "android_client_info": {
+          "package_name": "com.upskill.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3UBBtRq4m9WPBAFq3quzWDeUMg1KUuY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533722609237:android:19fa21d5b7f41db37c06dc",
+        "android_client_info": {
+          "package_name": "com.upskill.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3UBBtRq4m9WPBAFq3quzWDeUMg1KUuY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533722609237:android:9e93d8baf0da23587c06dc",
+        "android_client_info": {
+          "package_name": "com.upskill.student"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3UBBtRq4m9WPBAFq3quzWDeUMg1KUuY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
